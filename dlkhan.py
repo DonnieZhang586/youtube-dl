@@ -12,7 +12,10 @@ from subprocess import call
 CUR_PATH = os.path.dirname(os.path.abspath(__file__)) + '/'
 URLS_FILE = CUR_PATH + 'download.txt'
 
+# test url too long problem
+# URLS_FILE = CUR_PATH + 'no_make_dir.txt'
 
+ 
 def download_urls():
     with codecs.open(URLS_FILE, 'r', encoding='utf-8-sig') as old_file:
         lines = old_file.readlines()
@@ -43,8 +46,13 @@ def download_urls():
         # determine whether the path exist or
         # if exist,pass; otherwise, make dirs
         if not os.path.exists(working_path):
-            os.makedirs(working_path)
-            print('Created new folder: {}'.format(working_path))
+            try:
+               os.makedirs(working_path)
+               print('Created new folder: {}'.format(working_path))
+            except Exception:
+                print(traceback.format_exc())
+                print('The working_path is too long to create a folder: {}'.format(working_path))
+
         else:
             print('Existed folder: {}'.format(working_path))
 
