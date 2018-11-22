@@ -12,6 +12,7 @@ from subprocess import call
 CUR_PATH = os.path.dirname(os.path.abspath(__file__)) + '/'
 URLS_FILE = CUR_PATH + 'download.txt'
 
+
 # URLS_FILE = CUR_PATH + 'no_make_dir.txt'
 
 
@@ -77,3 +78,8 @@ def download_urls():
 if __name__ == '__main__':
     download_urls()
     print('Done.')
+
+
+
+
+
